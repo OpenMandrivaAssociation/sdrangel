@@ -26,6 +26,7 @@ BuildRequires:  ffmpeg-devel
 BuildRequires:  qmake5
 BuildRequires:  pkgconfig(libxtrxll)
 BuildRequires:  qt5-qtbase-devel
+BuildRequires:  pkgconfig(Qt5QuickWidgets)
 BuildRequires:  pkgconfig(Qt5MultimediaWidgets)
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Multimedia)
