@@ -25,6 +25,7 @@ BuildRequires:  airspyone_host-devel
 BuildRequires:  ffmpeg-devel
 BuildRequires:  qmake5
 BuildRequires:  pkgconfig(libxtrxll)
+BuildRequires:  pkgconfig(Qt5MultimediaWidgets)
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Multimedia)
 BuildRequires:  pkgconfig(Qt5OpenGL)
