@@ -23,6 +23,7 @@ BuildRequires:  LimeSuite-devel
 BuildRequires:  serialDV-devel
 BuildRequires:  airspyone_host-devel
 BuildRequires:  ffmpeg-devel
+BuildRequires:  qmake5
 BuildRequires:  pkgconfig(libxtrxll)
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Multimedia)
