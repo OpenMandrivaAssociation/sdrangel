@@ -1,5 +1,6 @@
 # Don't build with LTO since it breaks sdrangel
 %define _lto_cflags %{nil}
+%define _disable_lto %nil
 
 %ifarch %{ix86} %{arm}
 %bcond_with    fec
@@ -52,7 +53,7 @@ BuildRequires:  pkgconfig(librtlsdr)
 BuildRequires:  pkgconfig(libpostproc)
 # It does not build with libmirisdr from upstream
 # https://github.com/f4exb/libmirisdr-4 is needed
-#BuildRequires:  pkgconfig(libmirisdr)
+BuildRequires:  pkgconfig(libmirisdr)
 BuildRequires:  pkgconfig(libusb-1.0)
 BuildRequires:  pkgconfig(libxtrxll)
 BuildRequires:  pkgconfig(opus)
