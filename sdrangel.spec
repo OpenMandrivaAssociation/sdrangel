@@ -60,11 +60,11 @@ BuildRequires:  pkgconfig(opus)
 BuildRequires:  pkgconfig(opencv4)
 BuildRequires:  pkgconfig(libswscale)
 Requires:       python3-requests
-%if 0%{with fec}
+%if %{with fec}
 BuildRequires:  pkgconfig(libcm256cc)
 BuildRequires:  pkgconfig(nanomsg)
 %endif
-%if 0%{with freedv}
+%if %{with freedv}
 BuildRequires:  pkgconfig(codec2)
 %endif
 
@@ -84,7 +84,6 @@ sed -i 's/\r$//' Readme.md
 sed -i 's|#!%{_bindir}/env python|#!%{__python}|g' swagger/sdrangel/examples/*.py
 
 %build
-export CXXFLAGS="%{optflags} -Wno-return-type -fpermissive"
 %cmake \
   -DCMAKE_SHARED_LINKER_FLAGS="" \
   -DCMAKE_SKIP_RPATH:BOOL=OFF \
