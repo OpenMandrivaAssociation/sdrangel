@@ -83,8 +83,6 @@ sed -i 's/\r$//' Readme.md
 sed -i 's|#!%{_bindir}/env python|#!%{__python}|g' swagger/sdrangel/examples/*.py
 
 %build
-export CC=gcc
-export CXX=g++
 %cmake \
   -DCMAKE_SHARED_LINKER_FLAGS="" \
   -DCMAKE_SKIP_RPATH:BOOL=OFF \
