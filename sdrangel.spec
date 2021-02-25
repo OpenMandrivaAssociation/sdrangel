@@ -58,7 +58,7 @@ BuildRequires:	pkgconfig(libxtrxll)
 BuildRequires:	pkgconfig(opus)
 BuildRequires:	pkgconfig(opencv4)
 BuildRequires:	pkgconfig(libswscale)
-Requires:	python3-requests
+Requires:	python-requests
 %if %{with fec}
 BuildRequires:	pkgconfig(libcm256cc)
 BuildRequires:	pkgconfig(nanomsg)
