@@ -26,6 +26,7 @@ BuildRequires:	airspyone_host-devel
 BuildRequires:	ffmpeg-devel
 BuildRequires:	qmake5
 BuildRequires:	pkgconfig(libxtrxll)
+BuildRequires:	pkgconfig(libperseus-sdr)
 BuildRequires:	pkgconfig(Qt5QuickWidgets)
 BuildRequires:	pkgconfig(Qt5MultimediaWidgets)
 BuildRequires:	pkgconfig(Qt5Core)
@@ -36,6 +37,7 @@ BuildRequires:	pkgconfig(Qt5WebSockets)
 BuildRequires:	pkgconfig(Qt5Location)
 BuildRequires:	pkgconfig(Qt5Charts)
 BuildRequires:	pkgconfig(Qt5SerialPort)
+BuildRequires:	pkgconfig(Qt5TextToSpeech)
 BuildRequires:	pkgconfig(SoapySDR)
 BuildRequires:	pkgconfig(alsa)
 BuildRequires:	pkgconfig(codec2)
