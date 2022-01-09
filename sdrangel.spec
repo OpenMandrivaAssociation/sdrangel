@@ -9,13 +9,14 @@
 %bcond_without freedv
 
 Name:		sdrangel
-Version:	6.6.2
+Version:	6.18.0
 Release:	1
 Summary:	SDR/Analyzer frontend for Airspy, BladeRF, HackRF, RTL-SDR and FunCube
 License:	GPL-3.0-or-later
 Group:		Productivity/Hamradio/Other
 URL:		https://github.com/f4exb/sdrangel
 Source0:	https://github.com/f4exb/sdrangel/archive/v%{version}.tar.gz
+Patch0:		sdrangel-6.18.0-fix-build.patch
 BuildRequires:	cmake
 BuildRequires:	dsdcc-devel
 BuildRequires:	hicolor-icon-theme
@@ -80,7 +81,7 @@ Summary:	Documentation for SDRangel
 Documentation for SDRangel.
 
 %prep
-%autosetup
+%autosetup -p1
 sed -i 's/\r$//' Readme.md
 sed -i 's|#!%{_bindir}/env python|#!%{__python}|g' swagger/sdrangel/examples/*.py
 
