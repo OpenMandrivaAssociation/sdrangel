@@ -1,0 +1,14 @@
+diff -up sdrangel-6.18.0/plugins/channelrx/demoddatv/datvideorender.cpp.omv~ sdrangel-6.18.0/plugins/channelrx/demoddatv/datvideorender.cpp
+--- sdrangel-6.18.0/plugins/channelrx/demoddatv/datvideorender.cpp.omv~	2022-01-17 04:45:12.352690122 +0100
++++ sdrangel-6.18.0/plugins/channelrx/demoddatv/datvideorender.cpp	2022-01-17 04:45:25.595759463 +0100
+@@ -160,8 +160,8 @@ void DATVideoRender::resetMetaData()
+ bool DATVideoRender::preprocessStream()
+ {
+     AVDictionary *opts = nullptr;
+-    AVCodec *videoCodec = nullptr;
+-    AVCodec *audioCodec = nullptr;
++    const AVCodec *videoCodec = nullptr;
++    const AVCodec *audioCodec = nullptr;
+ 
+     int intRet = -1;
+     char *buffer = nullptr;
