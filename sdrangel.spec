@@ -9,7 +9,7 @@
 %bcond_without freedv
 
 Name:		sdrangel
-Version:	6.18.1
+Version:	6.19.0
 Release:	1
 Summary:	SDR/Analyzer frontend for Airspy, BladeRF, HackRF, RTL-SDR and FunCube
 License:	GPL-3.0-or-later
@@ -17,7 +17,7 @@ Group:		Productivity/Hamradio/Other
 URL:		https://github.com/f4exb/sdrangel
 Source0:	https://github.com/f4exb/sdrangel/archive/v%{version}.tar.gz
 Patch0:		sdrangel-6.18.0-fix-build.patch
-Patch1:		sdrangel-6.18.0-ffmpeg-5.0.patch
+#Patch1:		sdrangel-6.18.0-ffmpeg-5.0.patch
 BuildRequires:	cmake
 BuildRequires:	dsdcc-devel
 BuildRequires:	hicolor-icon-theme
@@ -40,6 +40,8 @@ BuildRequires:	pkgconfig(Qt5Location)
 BuildRequires:	pkgconfig(Qt5Charts)
 BuildRequires:	pkgconfig(Qt5SerialPort)
 BuildRequires:	pkgconfig(Qt5TextToSpeech)
+BuildRequires:	pkgconfig(Qt5WebEngine)
+BuildRequires:	pkgconfig(Qt5WebEngineWidgets)
 BuildRequires:	pkgconfig(SoapySDR)
 BuildRequires:	pkgconfig(alsa)
 BuildRequires:	pkgconfig(codec2)
@@ -113,10 +115,9 @@ rm -f %{buildroot}%{_datadir}/sdrangel/Readme.md
 %{_bindir}/ldpctool
 %{_bindir}/sdrangelbench
 %{_bindir}/sdrangelsrv
-%dir %{_prefix}/lib/sdrangel
-%{_prefix}/lib/sdrangel/lib*
-%{_prefix}/lib/sdrangel/plugins
-%{_prefix}/lib/sdrangel/pluginssrv
+%dir %{_libdir}/sdrangel
+%{_libdir}/sdrangel/lib*
+%{_libdir}/sdrangel/plugins*/
 %{_datadir}/applications/sdrangel.desktop
 %{_datadir}/icons/hicolor/scalable/apps/sdrangel_icon.svg
 
