@@ -10,7 +10,7 @@
 
 Name:		sdrangel
 Version:	7.6.2
-Release:	1
+Release:	2
 Summary:	SDR/Analyzer frontend for Airspy, BladeRF, HackRF, RTL-SDR and FunCube
 License:	GPL-3.0-or-later
 Group:		Productivity/Hamradio/Other
