@@ -9,8 +9,8 @@
 %bcond_without freedv
 
 Name:		sdrangel
-Version:	7.6.2
-Release:	2
+Version:	7.15.4
+Release:	1
 Summary:	SDR/Analyzer frontend for Airspy, BladeRF, HackRF, RTL-SDR and FunCube
 License:	GPL-3.0-or-later
 Group:		Productivity/Hamradio/Other
@@ -24,7 +24,7 @@ BuildRequires:	hicolor-icon-theme
 BuildRequires:	boost-devel
 BuildRequires:	LimeSuite-devel
 BuildRequires:	serialDV-devel
-BuildRequires:	airspyone_host-devel
+#BuildRequires:	airspyone_host-devel
 BuildRequires:	ffmpeg-devel
 BuildRequires:	qmake5
 BuildRequires:	pkgconfig(libxtrxll)
@@ -32,6 +32,7 @@ BuildRequires:	pkgconfig(libperseus-sdr)
 BuildRequires:	pkgconfig(Qt5QuickWidgets)
 BuildRequires:	pkgconfig(Qt5MultimediaWidgets)
 BuildRequires:	pkgconfig(Qt5Core)
+BuildRequires:	pkgconfig(Qt5Gamepad)
 BuildRequires:	pkgconfig(Qt5Multimedia)
 BuildRequires:	pkgconfig(Qt5OpenGL)
 BuildRequires:	pkgconfig(Qt5Widgets)
