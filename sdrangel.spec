@@ -9,13 +9,14 @@
 %bcond_without freedv
 
 Name:		sdrangel
-Version:	7.18.1
-Release:	2
+Version:	7.19.1
+Release:	1
 Summary:	SDR/Analyzer frontend for Airspy, BladeRF, HackRF, RTL-SDR and FunCube
 License:	GPL-3.0-or-later
 Group:		Productivity/Hamradio/Other
 URL:		https://github.com/f4exb/sdrangel
 Source0:	https://github.com/f4exb/sdrangel/archive/v%{version}.tar.gz
+Patch0:		sdrangel-7.19.1-ffmpeg-7.0.patch
 #Patch0:		sdrangel-6.18.0-fix-build.patch
 #Patch1:		sdrangel-6.18.0-ffmpeg-5.0.patch
 BuildRequires:	cmake
