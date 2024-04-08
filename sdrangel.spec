@@ -30,6 +30,7 @@ BuildRequires:	ffmpeg-devel
 BuildRequires:	qmake5
 BuildRequires:	pkgconfig(libxtrxll)
 BuildRequires:	pkgconfig(libperseus-sdr)
+BuildRequires:	pkgconfig(hamlib)
 BuildRequires:	cmake(Qt6QuickWidgets)
 BuildRequires:	cmake(Qt6MultimediaWidgets)
 BuildRequires:	cmake(Qt6Core)
