@@ -62,7 +62,7 @@ BuildRequires:	pkgconfig(libhackrf)
 BuildRequires:	pkgconfig(libiio)
 BuildRequires:	pkgconfig(liblz4)
 BuildRequires:	pkgconfig(librtlsdr)
-BuildRequires:	pkgconfig(libpostproc)
+#BuildRequires:	pkgconfig(libpostproc)
 # It does not build with libmirisdr from upstream
 # https://github.com/f4exb/libmirisdr-4 is needed
 BuildRequires:	pkgconfig(libmirisdr)
