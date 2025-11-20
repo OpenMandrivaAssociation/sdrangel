@@ -18,6 +18,8 @@ URL:		https://github.com/f4exb/sdrangel
 Source0:	https://github.com/f4exb/sdrangel/archive/v%{version}.tar.gz
 
 BuildRequires:	cmake
+BuildRequires:	gcc
+BuildRequires:	glibc-devel
 BuildRequires:	dsdcc-devel
 BuildRequires:	doxygen
 BuildRequires:	graphviz
