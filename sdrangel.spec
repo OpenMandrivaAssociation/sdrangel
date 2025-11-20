@@ -20,6 +20,7 @@ Source0:	https://github.com/f4exb/sdrangel/archive/v%{version}.tar.gz
 BuildRequires:	cmake
 BuildRequires:	dsdcc-devel
 BuildRequires:	doxygen
+BuildRequires:	graphviz
 BuildRequires:	hicolor-icon-theme
 BuildRequires:	boost-devel
 BuildRequires:	LimeSuite-devel
@@ -53,6 +54,7 @@ BuildRequires:	cmake(Qt6Svg)
 BuildRequires:	cmake(Qt6SvgWidgets)
 BuildRequires:	cmake(Qt6TextToSpeech)
 BuildRequires:	cmake(Qt6WebEngineCore)
+BuildRequires:	cmake(Qt6WebEngineQuick)
 BuildRequires:	cmake(Qt6WebEngineWidgets)
 BuildRequires:	cmake(Qt6QmlAssetDownloader)
 BuildRequires:	cmake(Qt6ExamplesAssetDownloaderPrivate)
