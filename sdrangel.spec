@@ -67,6 +67,7 @@ BuildRequires:	pkgconfig(SoapySDR)
 BuildRequires:	pkgconfig(alsa)
 BuildRequires:	pkgconfig(codec2)
 #BuildRequires:	pkgconfig(faad2)
+BuildRequires:	pkgconfig(flac)
 BuildRequires:	pkgconfig(fftw3f)
 BuildRequires:	pkgconfig(libairspyhf)
 BuildRequires:	pkgconfig(libavcodec)
@@ -126,12 +127,13 @@ sed -i 's|#!%{_bindir}/env python|#!%{__python}|g' swagger/sdrangel/examples/*.p
 %ifarch %{ix86}
   -DFORCE_SSE41=ON \
 %endif
-  -DRX_SAMPLE_24BIT=ON
+  -DRX_SAMPLE_24BIT=ON \
+  -G Ninja
 
-%make_build
+%ninja_build
 
 %install
-%make_install -C build
+%ninja_install -C build
 rm -f %{buildroot}%{_datadir}/sdrangel/Readme.md
 
 %files
