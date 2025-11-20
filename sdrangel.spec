@@ -27,6 +27,7 @@ BuildRequires:	serialDV-devel
 #BuildRequires:	airspyone_host-devel
 BuildRequires:	ffmpeg-devel
 BuildRequires:	qmake-qt6
+BuildRequires:	qt6-qtbase-theme-gtk3
 BuildRequires:	pkgconfig(libxtrxll)
 BuildRequires:	pkgconfig(libperseus-sdr)
 BuildRequires:	pkgconfig(hamlib)
