@@ -85,6 +85,7 @@ BuildRequires:	pkgconfig(opus)
 BuildRequires:	pkgconfig(opencv4)
 BuildRequires:	pkgconfig(libswscale)
 BuildRequires:	pkgconfig(uhd)
+BuildRequires:	pkgconfig(zlib)
 Requires:	python-requests
 %if %{with fec}
 BuildRequires:	pkgconfig(libcm256cc)
