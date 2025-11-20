@@ -27,6 +27,7 @@ BuildRequires:	serialDV-devel
 #BuildRequires:	airspyone_host-devel
 BuildRequires:	ffmpeg-devel
 BuildRequires:	qmake-qt6
+BuildRequires:	qt6-qtmultimedia-gstreamer
 BuildRequires:	qt6-qtbase-theme-gtk3
 BuildRequires:	pkgconfig(libxtrxll)
 BuildRequires:	pkgconfig(libperseus-sdr)
@@ -36,18 +37,23 @@ BuildRequires:	cmake(Qt6MultimediaWidgets)
 BuildRequires:	cmake(Qt6Core)
 BuildRequires:	cmake(Qt6Core5Compat)
 BuildRequires:	cmake(Qt6Charts)
+BuildRequires:	cmake(Qt6LabsSynchronizer)
 BuildRequires:	cmake(Qt6Multimedia)
 BuildRequires:	cmake(Qt6OpenGL)
+BuildRequires:	cmake(Qt6QmlCore)
+BuildRequires:	cmake(Qt6QmlNetwork)
 BuildRequires:	cmake(Qt6Widgets)
 BuildRequires:	cmake(Qt6WebSockets)
 BuildRequires:	cmake(Qt6Location)
 BuildRequires:	cmake(Qt6Charts)
 BuildRequires:	cmake(Qt6SerialPort)
+BuildRequires:	cmake(Qt6StateMachine)
 BuildRequires:	cmake(Qt6Svg)
 BuildRequires:	cmake(Qt6SvgWidgets)
 BuildRequires:	cmake(Qt6TextToSpeech)
 BuildRequires:	cmake(Qt6WebEngineCore)
 BuildRequires:	cmake(Qt6WebEngineWidgets)
+BuildRequires:	pkgconfig(Qt6QmlAssetDownloader)
 # The cmake(XKB) parameter pulls in lib64KF5KDELibs4Support-devel as
 # a dependency and a whole bunch of KF5/qt5 packages with it,
 # we dont want this in a Qt6 package
