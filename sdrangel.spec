@@ -9,22 +9,24 @@
 %bcond_without freedv
 
 Name:		sdrangel
-Version:	7.22.8
+Version:	7.22.9
 Release:	1
 Summary:	SDR/Analyzer frontend for Airspy, BladeRF, HackRF, RTL-SDR and FunCube
 License:	GPL-3.0-or-later
 Group:		Productivity/Hamradio/Other
 URL:		https://github.com/f4exb/sdrangel
 Source0:	https://github.com/f4exb/sdrangel/archive/v%{version}.tar.gz
+
 BuildRequires:	cmake
 BuildRequires:	dsdcc-devel
+BuildRequires:	doxygen
 BuildRequires:	hicolor-icon-theme
 BuildRequires:	boost-devel
 BuildRequires:	LimeSuite-devel
 BuildRequires:	serialDV-devel
 #BuildRequires:	airspyone_host-devel
 BuildRequires:	ffmpeg-devel
-BuildRequires:	qmake5
+BuildRequires:	qmake-qt6
 BuildRequires:	pkgconfig(libxtrxll)
 BuildRequires:	pkgconfig(libperseus-sdr)
 BuildRequires:	pkgconfig(hamlib)
@@ -32,7 +34,7 @@ BuildRequires:	cmake(Qt6QuickWidgets)
 BuildRequires:	cmake(Qt6MultimediaWidgets)
 BuildRequires:	cmake(Qt6Core)
 BuildRequires:	cmake(Qt6Core5Compat)
-BuildRequires:  cmake(Qt6Charts)
+BuildRequires:	cmake(Qt6Charts)
 BuildRequires:	cmake(Qt6Multimedia)
 BuildRequires:	cmake(Qt6OpenGL)
 BuildRequires:	cmake(Qt6Widgets)
@@ -45,11 +47,15 @@ BuildRequires:	cmake(Qt6SvgWidgets)
 BuildRequires:	cmake(Qt6TextToSpeech)
 BuildRequires:	cmake(Qt6WebEngineCore)
 BuildRequires:	cmake(Qt6WebEngineWidgets)
-BuildRequires:	cmake(XKB)
+# The cmake(XKB) parameter pulls in lib64KF5KDELibs4Support-devel as
+# a dependency and a whole bunch of KF5/qt5 packages with it,
+# we dont want this in a Qt6 package
+#BuildRequires:	cmake(XKB)
 BuildRequires:	pkgconfig(xkbcommon)
 BuildRequires:	pkgconfig(SoapySDR)
 BuildRequires:	pkgconfig(alsa)
 BuildRequires:	pkgconfig(codec2)
+BuildRequires:	pkgconfig(faad2)
 BuildRequires:	pkgconfig(fftw3f)
 BuildRequires:	pkgconfig(libairspyhf)
 BuildRequires:	pkgconfig(libavcodec)
@@ -69,6 +75,7 @@ BuildRequires:	pkgconfig(libxtrxll)
 BuildRequires:	pkgconfig(opus)
 BuildRequires:	pkgconfig(opencv4)
 BuildRequires:	pkgconfig(libswscale)
+BuildRequires:	pkgconfig(uhd)
 Requires:	python-requests
 %if %{with fec}
 BuildRequires:	pkgconfig(libcm256cc)
@@ -118,7 +125,7 @@ rm -f %{buildroot}%{_datadir}/sdrangel/Readme.md
 %files
 %license LICENSE
 %{_bindir}/sdrangel
-%{_bindir}/ldpctool
+#%%{_bindir}/ldpctool
 %{_bindir}/sdrangelbench
 %{_bindir}/sdrangelsrv
 %dir %{_libdir}/sdrangel
