@@ -29,6 +29,7 @@ BuildRequires:	ffmpeg-devel
 BuildRequires:	qmake-qt6
 BuildRequires:	qt6-qtmultimedia-gstreamer
 BuildRequires:	qt6-qtbase-theme-gtk3
+BuildRequires:	vulkan-headers
 BuildRequires:	pkgconfig(libxtrxll)
 BuildRequires:	pkgconfig(libperseus-sdr)
 BuildRequires:	pkgconfig(hamlib)
@@ -53,7 +54,8 @@ BuildRequires:	cmake(Qt6SvgWidgets)
 BuildRequires:	cmake(Qt6TextToSpeech)
 BuildRequires:	cmake(Qt6WebEngineCore)
 BuildRequires:	cmake(Qt6WebEngineWidgets)
-BuildRequires:	pkgconfig(Qt6QmlAssetDownloader)
+BuildRequires:	cmake(Qt6QmlAssetDownloader)
+BuildRequires:	cmake(Qt6ExamplesAssetDownloaderPrivate)
 # The cmake(XKB) parameter pulls in lib64KF5KDELibs4Support-devel as
 # a dependency and a whole bunch of KF5/qt5 packages with it,
 # we dont want this in a Qt6 package
