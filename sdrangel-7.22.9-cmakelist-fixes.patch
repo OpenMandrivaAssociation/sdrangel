@@ -1,0 +1,381 @@
+diff -urN sdrangel-7.22.9/cmake/Modules/FindAptDec.cmake sdrangel-7.22.9-cmakelist-fixes/cmake/Modules/FindAptDec.cmake
+--- sdrangel-7.22.9/cmake/Modules/FindAptDec.cmake	2025-09-28 20:27:43.000000000 +0100
++++ sdrangel-7.22.9-cmakelist-fixes/cmake/Modules/FindAptDec.cmake	2025-11-21 20:02:01.766188898 +0000
+@@ -1,6 +1,6 @@
+ IF(NOT APT_FOUND)
+-    INCLUDE(FindPkgConfig)
+-    PKG_CHECK_MODULES(PC_APT apt)
++    find_package(PkgConfig)
++    PKG_CHECK_MODULES(PC_APT "aptdec")
+ 
+     FIND_PATH(
+         APT_INCLUDE_DIR
+@@ -19,11 +19,11 @@
+               /usr/lib64
+     )
+ 
+-    message(STATUS "APT LIBRARIES " ${APT_LIBRARIES})
+-    message(STATUS "APT INCLUDE DIRS " ${APT_INCLUDE_DIR})
++    message(STATUS "APTDEC LIBRARIES " ${APT_LIBRARIES})
++    message(STATUS "APTDEC INCLUDE DIRS " ${APT_INCLUDE_DIR})
+ 
+     INCLUDE(FindPackageHandleStandardArgs)
+-    FIND_PACKAGE_HANDLE_STANDARD_ARGS(APT DEFAULT_MSG APT_LIBRARIES APT_INCLUDE_DIR)
++    FIND_PACKAGE_HANDLE_STANDARD_ARGS(AptDec DEFAULT_MSG APT_LIBRARIES APT_INCLUDE_DIR)
+     MARK_AS_ADVANCED(APT_LIBRARIES APT_INCLUDE_DIR)
+ 
+ ENDIF(NOT APT_FOUND)
+diff -urN sdrangel-7.22.9/cmake/Modules/FindCM256cc.cmake sdrangel-7.22.9-cmakelist-fixes/cmake/Modules/FindCM256cc.cmake
+--- sdrangel-7.22.9/cmake/Modules/FindCM256cc.cmake	2025-09-28 20:27:43.000000000 +0100
++++ sdrangel-7.22.9-cmakelist-fixes/cmake/Modules/FindCM256cc.cmake	2025-11-21 19:55:55.730343255 +0000
+@@ -1,5 +1,5 @@
+ if (NOT CM256CC_FOUND)
+-    INCLUDE(FindPkgConfig)
++    find_package(PkgConfig)
+     PKG_CHECK_MODULES(PC_CM256cc "libcm256cc")
+ 
+     FIND_PATH(CM256CC_INCLUDE_DIR
+@@ -25,14 +25,14 @@
+     )
+ 
+     if(CM256CC_INCLUDE_DIR AND CM256CC_LIBRARIES)
+-        set(CM256CC_FOUND TRUE CACHE INTERNAL "CM256CC found")
+-        message(STATUS "Found CM256cc: ${CM256CC_INCLUDE_DIR}, ${CM256CC_LIBRARIES}")
++        set(CM256CC_FOUND TRUE CACHE INTERNAL "cm256cc found")
++        message(STATUS "Found cm256cc: ${CM256CC_INCLUDE_DIR}, ${CM256CC_LIBRARIES}")
+     else(CM256CC_INCLUDE_DIR AND CM256CC_LIBRARIES)
+-        set(CM256CC_FOUND FALSE CACHE INTERNAL "CM256CC found")
+-        message(STATUS "CM256cc not found")
++        set(CM256CC_FOUND FALSE CACHE INTERNAL "cm256cc found")
++        message(STATUS "cm256cc not found")
+     endif(CM256CC_INCLUDE_DIR AND CM256CC_LIBRARIES)
+ 
+     INCLUDE(FindPackageHandleStandardArgs)
+-    FIND_PACKAGE_HANDLE_STANDARD_ARGS(CM256CC DEFAULT_MSG CM256CC_LIBRARIES CM256CC_INCLUDE_DIR)
++    FIND_PACKAGE_HANDLE_STANDARD_ARGS(CM256cc DEFAULT_MSG CM256CC_LIBRARIES CM256CC_INCLUDE_DIR)
+     MARK_AS_ADVANCED(CM256CC_LIBRARIES CM256CC_INCLUDE_DIR)
+-endif (NOT CM256CC_FOUND)
+\ No newline at end of file
++endif (NOT CM256CC_FOUND)
+diff -urN sdrangel-7.22.9/cmake/Modules/FindCodec2.cmake sdrangel-7.22.9-cmakelist-fixes/cmake/Modules/FindCodec2.cmake
+--- sdrangel-7.22.9/cmake/Modules/FindCodec2.cmake	2025-09-28 20:27:43.000000000 +0100
++++ sdrangel-7.22.9-cmakelist-fixes/cmake/Modules/FindCodec2.cmake	2025-11-21 19:55:06.705773422 +0000
+@@ -1,6 +1,6 @@
+ if (NOT CODEC2_FOUND)
+-    INCLUDE(FindPkgConfig)
+-    PKG_CHECK_MODULES(PC_CODEC2 "codec2")
++    find_package(PkgConfig)
++    PKG_CHECK_MODULES(PC_codec2 "codec2")
+ 
+     FIND_PATH(CODEC2_INCLUDE_DIR
+         NAMES codec2/codec2.h
+@@ -25,14 +25,14 @@
+     )
+ 
+     if(CODEC2_INCLUDE_DIR AND CODEC2_LIBRARIES)
+-        set(CODEC2_FOUND TRUE CACHE INTERNAL "CODEC2 found")
+-        message(STATUS "Found Codec2: ${CODEC2_INCLUDE_DIR}, ${CODEC2_LIBRARIES}")
++        set(CODEC2_FOUND TRUE CACHE INTERNAL "codec2 found")
++        message(STATUS "Found codec2: ${CODEC2_INCLUDE_DIR}, ${CODEC2_LIBRARIES}")
+     else()
+-        set(CODEC2_FOUND FALSE CACHE INTERNAL "CODEC2 found")
+-        message(STATUS "Codec2 not found")
++        set(CODEC2_FOUND FALSE CACHE INTERNAL "codec2 found")
++        message(STATUS "codec2 not found")
+     endif()
+ 
+     INCLUDE(FindPackageHandleStandardArgs)
+-    FIND_PACKAGE_HANDLE_STANDARD_ARGS(CODEC2 DEFAULT_MSG CODEC2_LIBRARIES CODEC2_INCLUDE_DIR)
++    FIND_PACKAGE_HANDLE_STANDARD_ARGS(Codec2 DEFAULT_MSG CODEC2_LIBRARIES CODEC2_INCLUDE_DIR)
+     MARK_AS_ADVANCED(CODEC2_LIBRARIES CODEC2_INCLUDE_DIR)
+-endif (NOT CODEC2_FOUND)
+\ No newline at end of file
++endif (NOT CODEC2_FOUND)
+diff -urN sdrangel-7.22.9/cmake/Modules/FindFAAD.cmake sdrangel-7.22.9-cmakelist-fixes/cmake/Modules/FindFAAD.cmake
+--- sdrangel-7.22.9/cmake/Modules/FindFAAD.cmake	2025-09-28 20:27:43.000000000 +0100
++++ sdrangel-7.22.9-cmakelist-fixes/cmake/Modules/FindFAAD.cmake	2025-11-21 19:56:34.176958549 +0000
+@@ -1,6 +1,6 @@
+ IF(NOT FAAD_FOUND)
+-    INCLUDE(FindPkgConfig)
+-    PKG_CHECK_MODULES(PC_FAAD faad2)
++    find_package(PkgConfig)
++    PKG_CHECK_MODULES(PC_FAAD "faad2")
+ 
+     FIND_PATH(
+         FAAD_INCLUDE_DIR
+diff -urN sdrangel-7.22.9/cmake/Modules/FindFFTW3F.cmake sdrangel-7.22.9-cmakelist-fixes/cmake/Modules/FindFFTW3F.cmake
+--- sdrangel-7.22.9/cmake/Modules/FindFFTW3F.cmake	2025-09-28 20:27:43.000000000 +0100
++++ sdrangel-7.22.9-cmakelist-fixes/cmake/Modules/FindFFTW3F.cmake	2025-11-21 19:56:41.634645562 +0000
+@@ -3,7 +3,7 @@
+ 
+ # Find single-precision (float) version of FFTW3
+ 
+-INCLUDE(FindPkgConfig)
++find_package(PkgConfig)
+ PKG_CHECK_MODULES(PC_FFTW3F "fftw3f >= 3.0")
+ 
+ FIND_PATH(
+diff -urN sdrangel-7.22.9/cmake/Modules/FindFLAC.cmake sdrangel-7.22.9-cmakelist-fixes/cmake/Modules/FindFLAC.cmake
+--- sdrangel-7.22.9/cmake/Modules/FindFLAC.cmake	2025-09-28 20:27:43.000000000 +0100
++++ sdrangel-7.22.9-cmakelist-fixes/cmake/Modules/FindFLAC.cmake	2025-11-21 20:14:02.678911634 +0000
+@@ -1,5 +1,5 @@
+ IF(NOT FLAC_FOUND)
+-    INCLUDE(FindPkgConfig)
++    find_package(PkgConfig)
+     PKG_CHECK_MODULES(PC_FLAC flac)
+ 
+     FIND_PATH(
+diff -urN sdrangel-7.22.9/cmake/Modules/FindGGMorse.cmake sdrangel-7.22.9-cmakelist-fixes/cmake/Modules/FindGGMorse.cmake
+--- sdrangel-7.22.9/cmake/Modules/FindGGMorse.cmake	2025-09-28 20:27:43.000000000 +0100
++++ sdrangel-7.22.9-cmakelist-fixes/cmake/Modules/FindGGMorse.cmake	2025-11-21 19:58:09.779483118 +0000
+@@ -1,5 +1,5 @@
+ if (NOT GGMORSE_FOUND)
+-    INCLUDE(FindPkgConfig)
++    find_package(PkgConfig)
+     PKG_CHECK_MODULES(PC_GGMorse "libggmorse")
+ 
+     FIND_PATH(GGMORSE_INCLUDE_DIR
+@@ -33,6 +33,6 @@
+     endif (GGMORSE_INCLUDE_DIR AND GGMORSE_LIBRARIES)
+ 
+     INCLUDE(FindPackageHandleStandardArgs)
+-    FIND_PACKAGE_HANDLE_STANDARD_ARGS(GGMORSE DEFAULT_MSG GGMORSE_LIBRARIES GGMORSE_INCLUDE_DIR)
++    FIND_PACKAGE_HANDLE_STANDARD_ARGS(GGMorse DEFAULT_MSG GGMORSE_LIBRARIES GGMORSE_INCLUDE_DIR)
+     MARK_AS_ADVANCED(GGMORSE_LIBRARIES GGMORSE_INCLUDE_DIR)
+ endif (NOT GGMORSE_FOUND)
+diff -urN sdrangel-7.22.9/cmake/Modules/FindHamlib.cmake sdrangel-7.22.9-cmakelist-fixes/cmake/Modules/FindHamlib.cmake
+--- sdrangel-7.22.9/cmake/Modules/FindHamlib.cmake	2025-09-28 20:27:43.000000000 +0100
++++ sdrangel-7.22.9-cmakelist-fixes/cmake/Modules/FindHamlib.cmake	2025-11-21 19:21:48.835790131 +0000
+@@ -43,7 +43,7 @@
+     endif()
+ 
+     INCLUDE(FindPackageHandleStandardArgs)
+-    FIND_PACKAGE_HANDLE_STANDARD_ARGS(HAMLIB DEFAULT_MSG hamlib_LIBRARIES hamlib_INCLUDE_DIRS)
++    FIND_PACKAGE_HANDLE_STANDARD_ARGS(Hamlib DEFAULT_MSG hamlib_LIBRARIES hamlib_INCLUDE_DIRS)
+     MARK_AS_ADVANCED(hamlib_LIBRARIES hamlib_INCLUDE_DIRS)
+ 
+ endif (NOT hamlib_FOUND)
+diff -urN sdrangel-7.22.9/cmake/Modules/FindLibAIRSPY.cmake sdrangel-7.22.9-cmakelist-fixes/cmake/Modules/FindLibAIRSPY.cmake
+--- sdrangel-7.22.9/cmake/Modules/FindLibAIRSPY.cmake	2025-09-28 20:27:43.000000000 +0100
++++ sdrangel-7.22.9-cmakelist-fixes/cmake/Modules/FindLibAIRSPY.cmake	2025-11-21 20:15:06.478359782 +0000
+@@ -1,5 +1,5 @@
+ if(NOT LIBAIRSPY_FOUND)
+-
++  find_package(PkgConfig)
+   pkg_check_modules (LIBAIRSPY_PKG libairspy)
+ 
+   find_path(LIBAIRSPY_INCLUDE_DIR
+diff -urN sdrangel-7.22.9/cmake/Modules/FindLibAIRSPYHF.cmake sdrangel-7.22.9-cmakelist-fixes/cmake/Modules/FindLibAIRSPYHF.cmake
+--- sdrangel-7.22.9/cmake/Modules/FindLibAIRSPYHF.cmake	2025-09-28 20:27:43.000000000 +0100
++++ sdrangel-7.22.9-cmakelist-fixes/cmake/Modules/FindLibAIRSPYHF.cmake	2025-11-21 20:15:39.920640024 +0000
+@@ -1,5 +1,5 @@
+ if(NOT LIBAIRSPYHF_FOUND)
+-
++  find_package(PkgConfig)
+   pkg_check_modules (LIBAIRSPYHF_PKG libairspyhf)
+ 
+   find_path(LIBAIRSPYHF_INCLUDE_DIR
+diff -urN sdrangel-7.22.9/cmake/Modules/FindLibBLADERF.cmake sdrangel-7.22.9-cmakelist-fixes/cmake/Modules/FindLibBLADERF.cmake
+--- sdrangel-7.22.9/cmake/Modules/FindLibBLADERF.cmake	2025-09-28 20:27:43.000000000 +0100
++++ sdrangel-7.22.9-cmakelist-fixes/cmake/Modules/FindLibBLADERF.cmake	2025-11-21 20:15:59.743123390 +0000
+@@ -1,5 +1,5 @@
+ if(NOT LIBBLADERF_FOUND)
+-
++  find_package(PkgConfig)
+   pkg_check_modules (LIBBLADERF_PKG libbladeRF>=2.0)
+ 
+   if(LIBBLADERF_PKG_FOUND OR (DEFINED BLADERF_DIR))
+diff -urN sdrangel-7.22.9/cmake/Modules/FindLibDAB.cmake sdrangel-7.22.9-cmakelist-fixes/cmake/Modules/FindLibDAB.cmake
+--- sdrangel-7.22.9/cmake/Modules/FindLibDAB.cmake	2025-09-28 20:27:43.000000000 +0100
++++ sdrangel-7.22.9-cmakelist-fixes/cmake/Modules/FindLibDAB.cmake	2025-11-21 19:57:53.091643206 +0000
+@@ -1,6 +1,6 @@
+ IF (NOT DAB_FOUND)
+-    INCLUDE(FindPkgConfig)
+-    PKG_CHECK_MODULES(LIBDAB_PKG libdab)
++    find_package(PkgConfig)
++    PKG_CHECK_MODULES(LIBDAB_PKG "libdab")
+ 
+     FIND_PATH(
+         DAB_INCLUDE_DIR
+diff -urN sdrangel-7.22.9/cmake/Modules/FindLibDSDcc.cmake sdrangel-7.22.9-cmakelist-fixes/cmake/Modules/FindLibDSDcc.cmake
+--- sdrangel-7.22.9/cmake/Modules/FindLibDSDcc.cmake	2025-09-28 20:27:43.000000000 +0100
++++ sdrangel-7.22.9-cmakelist-fixes/cmake/Modules/FindLibDSDcc.cmake	2025-11-21 20:16:26.863341885 +0000
+@@ -1,7 +1,7 @@
+ # Find libdsdcc
+ 
+ if(NOT LIBDSDCC_FOUND)
+-
++  find_package(PkgConfig)
+   pkg_check_modules(LIBDSDCC_PKG libdsdcc)
+ 
+   find_path(LIBDSDCC_INCLUDE_DIR
+diff -urN sdrangel-7.22.9/cmake/Modules/FindLibHACKRF.cmake sdrangel-7.22.9-cmakelist-fixes/cmake/Modules/FindLibHACKRF.cmake
+--- sdrangel-7.22.9/cmake/Modules/FindLibHACKRF.cmake	2025-09-28 20:27:43.000000000 +0100
++++ sdrangel-7.22.9-cmakelist-fixes/cmake/Modules/FindLibHACKRF.cmake	2025-11-21 20:16:35.568031740 +0000
+@@ -1,5 +1,5 @@
+ if(NOT LIBHACKRF_FOUND)
+-
++  find_package(PkgConfig)
+   pkg_check_modules (LIBHACKRF_PKG libhackrf)
+ 
+   find_path(LIBHACKRF_INCLUDE_DIR
+diff -urN sdrangel-7.22.9/cmake/Modules/FindLibIIO.cmake sdrangel-7.22.9-cmakelist-fixes/cmake/Modules/FindLibIIO.cmake
+--- sdrangel-7.22.9/cmake/Modules/FindLibIIO.cmake	2025-09-28 20:27:43.000000000 +0100
++++ sdrangel-7.22.9-cmakelist-fixes/cmake/Modules/FindLibIIO.cmake	2025-11-21 20:16:43.815477514 +0000
+@@ -1,5 +1,5 @@
+ if(NOT LIBIIO_FOUND)
+-
++  find_package(PkgConfig)
+   pkg_check_modules (LIBIIO_PKG libiio>=0.7)
+ 
+   if(LIBIIO_PKG_FOUND OR (DEFINED IIO_DIR))
+diff -urN sdrangel-7.22.9/cmake/Modules/FindLibMiriSDR.cmake sdrangel-7.22.9-cmakelist-fixes/cmake/Modules/FindLibMiriSDR.cmake
+--- sdrangel-7.22.9/cmake/Modules/FindLibMiriSDR.cmake	2025-09-28 20:27:43.000000000 +0100
++++ sdrangel-7.22.9-cmakelist-fixes/cmake/Modules/FindLibMiriSDR.cmake	2025-11-21 20:17:10.767458625 +0000
+@@ -1,5 +1,5 @@
+ if(NOT LIBMIRISDR_FOUND)
+-
++  find_package(PkgConfig)
+   pkg_check_modules (LIBMIRISDR_PKG libmirisdr)
+ 
+   find_path(LIBMIRISDR_INCLUDE_DIR
+diff -urN sdrangel-7.22.9/cmake/Modules/FindLibOsmoSDR.cmake sdrangel-7.22.9-cmakelist-fixes/cmake/Modules/FindLibOsmoSDR.cmake
+--- sdrangel-7.22.9/cmake/Modules/FindLibOsmoSDR.cmake	2025-09-28 20:27:43.000000000 +0100
++++ sdrangel-7.22.9-cmakelist-fixes/cmake/Modules/FindLibOsmoSDR.cmake	2025-11-21 20:17:21.344100283 +0000
+@@ -1,5 +1,5 @@
+ if(NOT LIBOSMOSDR_FOUND)
+-
++  find_package(PkgConfig)
+   pkg_check_modules (LIBOSMOSDR_PKG libosmosdr)
+   find_path(LIBOSMOSDR_INCLUDE_DIR NAMES osmosdr.h
+ 	HINTS ${LIBOSMOSDR_PKG_INCLUDE_DIRS}
+diff -urN sdrangel-7.22.9/cmake/Modules/FindLibPerseus.cmake sdrangel-7.22.9-cmakelist-fixes/cmake/Modules/FindLibPerseus.cmake
+--- sdrangel-7.22.9/cmake/Modules/FindLibPerseus.cmake	2025-09-28 20:27:43.000000000 +0100
++++ sdrangel-7.22.9-cmakelist-fixes/cmake/Modules/FindLibPerseus.cmake	2025-11-21 20:17:28.591961159 +0000
+@@ -1,5 +1,5 @@
+ if(NOT LIBPERSEUS_FOUND)
+-
++  find_package(PkgConfig)
+   pkg_check_modules (LIBPERSEUS_PKG libperseus)
+ 
+   find_path(LIBPERSEUS_INCLUDE_DIR
+diff -urN sdrangel-7.22.9/cmake/Modules/FindLibRTLSDR.cmake sdrangel-7.22.9-cmakelist-fixes/cmake/Modules/FindLibRTLSDR.cmake
+--- sdrangel-7.22.9/cmake/Modules/FindLibRTLSDR.cmake	2025-09-28 20:27:43.000000000 +0100
++++ sdrangel-7.22.9-cmakelist-fixes/cmake/Modules/FindLibRTLSDR.cmake	2025-11-21 20:17:40.397405048 +0000
+@@ -1,5 +1,5 @@
+ if(NOT LIBRTLSDR_FOUND)
+-
++  find_package(PkgConfig)
+   pkg_check_modules (LIBRTLSDR_PKG librtlsdr)
+ 
+   find_path(LIBRTLSDR_INCLUDE_DIR
+diff -urN sdrangel-7.22.9/cmake/Modules/FindLibSigMF.cmake sdrangel-7.22.9-cmakelist-fixes/cmake/Modules/FindLibSigMF.cmake
+--- sdrangel-7.22.9/cmake/Modules/FindLibSigMF.cmake	2025-09-28 20:27:43.000000000 +0100
++++ sdrangel-7.22.9-cmakelist-fixes/cmake/Modules/FindLibSigMF.cmake	2025-11-21 20:17:49.992821768 +0000
+@@ -1,7 +1,7 @@
+ # Find libdsdcc
+ 
+ if (NOT LIBSIGMF_FOUND)
+-
++    find_package(PkgConfig)
+     pkg_check_modules(LIBSIGMF_PKG libsigmf)
+ 
+     find_path (LIBSIGMF_INCLUDE_DIR
+diff -urN sdrangel-7.22.9/cmake/Modules/FindLibUSB.cmake sdrangel-7.22.9-cmakelist-fixes/cmake/Modules/FindLibUSB.cmake
+--- sdrangel-7.22.9/cmake/Modules/FindLibUSB.cmake	2025-09-28 20:27:43.000000000 +0100
++++ sdrangel-7.22.9-cmakelist-fixes/cmake/Modules/FindLibUSB.cmake	2025-11-21 20:18:05.761875845 +0000
+@@ -1,4 +1,5 @@
+ if(NOT LIBUSB_FOUND)
++  find_package(PkgConfig)
+   pkg_check_modules (LIBUSB_PKG libusb-1.0)
+   find_path(LIBUSB_INCLUDE_DIR NAMES libusb.h
+     PATHS
+diff -urN sdrangel-7.22.9/cmake/Modules/FindLibXTRX.cmake sdrangel-7.22.9-cmakelist-fixes/cmake/Modules/FindLibXTRX.cmake
+--- sdrangel-7.22.9/cmake/Modules/FindLibXTRX.cmake	2025-09-28 20:27:43.000000000 +0100
++++ sdrangel-7.22.9-cmakelist-fixes/cmake/Modules/FindLibXTRX.cmake	2025-11-21 20:18:15.160197002 +0000
+@@ -1,5 +1,5 @@
+ if(NOT LIBXTRX_FOUND)
+-
++  find_package(PkgConfig)
+   pkg_check_modules (LIBXTRX_PKG libxtrx)
+ 
+   find_path(LIBXTRX_INCLUDE_DIRS
+@@ -31,4 +31,4 @@
+ 
+   mark_as_advanced(LIBXTRX_INCLUDE_DIRS LIBXTRX_LIBRARY)
+ 
+-endif(NOT LIBXTRX_FOUND)
+\ No newline at end of file
++endif(NOT LIBXTRX_FOUND)
+diff -urN sdrangel-7.22.9/cmake/Modules/FindLZ4.cmake sdrangel-7.22.9-cmakelist-fixes/cmake/Modules/FindLZ4.cmake
+--- sdrangel-7.22.9/cmake/Modules/FindLZ4.cmake	2025-09-28 20:27:43.000000000 +0100
++++ sdrangel-7.22.9-cmakelist-fixes/cmake/Modules/FindLZ4.cmake	2025-11-21 20:18:38.024769711 +0000
+@@ -1,4 +1,4 @@
+-INCLUDE(FindPkgConfig)
++find_package(PkgConfig)
+ PKG_CHECK_MODULES(PC_LZ4 "liblz4")
+ 
+ FIND_PATH(LZ4_INCLUDE_DIRS
+diff -urN sdrangel-7.22.9/cmake/Modules/FindSDRplay.cmake sdrangel-7.22.9-cmakelist-fixes/cmake/Modules/FindSDRplay.cmake
+--- sdrangel-7.22.9/cmake/Modules/FindSDRplay.cmake	2025-09-28 20:27:43.000000000 +0100
++++ sdrangel-7.22.9-cmakelist-fixes/cmake/Modules/FindSDRplay.cmake	2025-11-21 19:28:39.480038035 +0000
+@@ -17,11 +17,11 @@
+               /usr/lib64
+     )
+ 
+-    message(STATUS "SDRPLAY LIBRARIES " ${SDRPLAY_LIBRARIES})
+-    message(STATUS "SDRPLAY INCLUDE DIRS " ${SDRPLAY_INCLUDE_DIR})
++    message(STATUS "SDRplay LIBRARIES " ${SDRPLAY_LIBRARIES})
++    message(STATUS "SDRplay INCLUDE DIRS " ${SDRPLAY_INCLUDE_DIR})
+ 
+     INCLUDE(FindPackageHandleStandardArgs)
+-    FIND_PACKAGE_HANDLE_STANDARD_ARGS(SDRPLAY DEFAULT_MSG SDRPLAY_LIBRARIES SDRPLAY_INCLUDE_DIR)
++    FIND_PACKAGE_HANDLE_STANDARD_ARGS(SDRplay DEFAULT_MSG SDRPLAY_LIBRARIES SDRPLAY_INCLUDE_DIR)
+     MARK_AS_ADVANCED(SDRPLAY_LIBRARIES SDRPLAY_INCLUDE_DIR)
+ 
+ ENDIF(NOT SDRPLAY_FOUND)
+diff -urN sdrangel-7.22.9/cmake/Modules/FindSgp4.cmake sdrangel-7.22.9-cmakelist-fixes/cmake/Modules/FindSgp4.cmake
+--- sdrangel-7.22.9/cmake/Modules/FindSgp4.cmake	2025-09-28 20:27:43.000000000 +0100
++++ sdrangel-7.22.9-cmakelist-fixes/cmake/Modules/FindSgp4.cmake	2025-11-21 19:57:10.387309717 +0000
+@@ -1,6 +1,6 @@
+ IF(NOT SGP4_FOUND)
+-    INCLUDE(FindPkgConfig)
+-    PKG_CHECK_MODULES(PC_SGP4 sgp4)
++    find_package(PkgConfig)
++    PKG_CHECK_MODULES(PC_SGP4 "sgp4")
+ 
+     FIND_PATH(
+         SGP4_INCLUDE_DIR
+@@ -23,7 +23,7 @@
+     message(STATUS "SGP4 INCLUDE DIRS " ${SGP4_INCLUDE_DIR})
+ 
+     INCLUDE(FindPackageHandleStandardArgs)
+-    FIND_PACKAGE_HANDLE_STANDARD_ARGS(SGP4 DEFAULT_MSG SGP4_LIBRARIES SGP4_INCLUDE_DIR)
++    FIND_PACKAGE_HANDLE_STANDARD_ARGS(Sgp4 DEFAULT_MSG SGP4_LIBRARIES SGP4_INCLUDE_DIR)
+     MARK_AS_ADVANCED(SGP4_LIBRARIES SGP4_INCLUDE_DIR)
+ 
+ ENDIF(NOT SGP4_FOUND)
+diff -urN sdrangel-7.22.9/cmake/Modules/FindSoapySDR.cmake sdrangel-7.22.9-cmakelist-fixes/cmake/Modules/FindSoapySDR.cmake
+--- sdrangel-7.22.9/cmake/Modules/FindSoapySDR.cmake	2025-09-28 20:27:43.000000000 +0100
++++ sdrangel-7.22.9-cmakelist-fixes/cmake/Modules/FindSoapySDR.cmake	2025-11-21 20:19:36.489712299 +0000
+@@ -8,7 +8,7 @@
+     endif(NOT SOAPY_SDR_ABI_VERSION_MATCHES)
+     set(${VERSION} "${CMAKE_MATCH_1}" PARENT_SCOPE)
+   endfunction(_SOAPY_SDR_GET_ABI_VERSION)
+-
++  find_package(PkgConfig)
+   pkg_search_module (SOAPYSDR SoapySDR>=0.4.0)
+ 
+   if(NOT SOAPYSDR_FOUND OR (DEFINED SOAPYSDR_DIR))
+diff -urN sdrangel-7.22.9/cmake/Modules/FindUHD.cmake sdrangel-7.22.9-cmakelist-fixes/cmake/Modules/FindUHD.cmake
+--- sdrangel-7.22.9/cmake/Modules/FindUHD.cmake	2025-09-28 20:27:43.000000000 +0100
++++ sdrangel-7.22.9-cmakelist-fixes/cmake/Modules/FindUHD.cmake	2025-11-21 19:58:25.267677190 +0000
+@@ -1,6 +1,6 @@
+ IF(NOT UHD_FOUND)
+-    INCLUDE(FindPkgConfig)
+-    PKG_CHECK_MODULES(PC_UHD uhd)
++    find_package(PkgConfig)
++    PKG_CHECK_MODULES(PC_UHD "uhd")
+ 
+     FIND_PATH(
+         UHD_INCLUDE_DIR

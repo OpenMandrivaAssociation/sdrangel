@@ -16,6 +16,8 @@ License:	GPL-3.0-or-later
 Group:		Productivity/Hamradio/Other
 URL:		https://github.com/f4exb/sdrangel
 Source0:	https://github.com/f4exb/sdrangel/archive/v%{version}.tar.gz
+# Fix CMakeLists & FindXX.cmake issues
+Patch0:		sdrangel-7.22.9-cmakelist-fixes.patch
 
 #BuildRequires:	airspyone_host-devel
 BuildRequires:	cmake
