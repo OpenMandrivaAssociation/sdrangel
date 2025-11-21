@@ -29,6 +29,7 @@ BuildRequires:	graphviz
 BuildRequires:	hicolor-icon-theme
 BuildRequires:	LimeSuite-devel
 BuildRequires:	qmake-qt6
+BuildRequires:	qt6-qtbase-theme-gtk3
 BuildRequires:	qt6-qtmultimedia-gstreamer
 BuildRequires:	serialDV-devel
 BuildRequires:	stdc++-devel
@@ -50,6 +51,7 @@ BuildRequires:	cmake(Qt6QmlAssetDownloader)
 BuildRequires:	cmake(Qt6Qml)
 BuildRequires:	cmake(Qt6QmlCore)
 BuildRequires:	cmake(Qt6QmlNetwork)
+BuildRequires:	cmake(Qt6QmlMeta)
 BuildRequires:	cmake(Qt6Quick)
 BuildRequires:	cmake(Qt6QuickWidgets)
 BuildRequires:	cmake(Qt6SerialPort)
