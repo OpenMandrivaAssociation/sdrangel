@@ -28,6 +28,7 @@ BuildRequires:	ffmpeg-devel
 BuildRequires:	gcc
 BuildRequires:	glibc-devel
 BuildRequires:	graphviz
+BuildRequires:	hamlib++-devel
 BuildRequires:	hicolor-icon-theme
 BuildRequires:	LimeSuite-devel
 BuildRequires:	qmake-qt6
@@ -40,6 +41,7 @@ BuildRequires:	cmake(KF6Declarative)
 BuildRequires:	cmake(lz4)
 BuildRequires:	cmake(Qt6Charts)
 BuildRequires:	cmake(Qt6Core)
+BuildRequires:  cmake(Qt6CorePrivate)
 BuildRequires:	cmake(Qt6Core5Compat)
 BuildRequires:	cmake(Qt6ExamplesAssetDownloaderPrivate)
 BuildRequires:	cmake(Qt6Gui)
@@ -76,7 +78,7 @@ BuildRequires:	cmake(Qt6Widgets)
 # we dont want this in a Qt6 package
 #BuildRequires:	cmake(XKB)
 BuildRequires:	pkgconfig(alsa)
-BuildRequires:	pkgconfig(codec2)
+BuildRequires:	pkgconfig(codec2) >= 1.2.0
 BuildRequires:	pkgconfig(fftw3f)
 BuildRequires:	pkgconfig(flac)
 BuildRequires:	pkgconfig(hamlib)
@@ -115,7 +117,7 @@ BuildRequires:	pkgconfig(codec2)
 %endif
 
 %description
-SDRangel is an Open Source Qt5/OpenGL SDR and signal analyzer frontend
+SDRangel is an Open Source Qt6/OpenGL SDR and signal analyzer frontend
 to various hardware.
 
 %package doc
