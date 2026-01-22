@@ -21,6 +21,7 @@ Patch0:		sdrangel-7.22.9-cmakelist-fixes.patch
 
 #BuildRequires:	airspyone_host-devel
 BuildRequires:	cmake
+BuildRequires:	ninja
 BuildRequires:	appstream-util
 BuildRequires:	boost-devel
 BuildRequires:	desktop-file-utils
