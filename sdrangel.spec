@@ -9,27 +9,31 @@
 %bcond_without freedv
 
 Name:		sdrangel
-Version:	7.22.9
+Version:	7.23.0
 Release:	1
 Summary:	SDR/Analyzer frontend for Airspy, BladeRF, HackRF, RTL-SDR and FunCube
 License:	GPL-3.0-or-later
 Group:		Productivity/Hamradio/Other
 URL:		https://github.com/f4exb/sdrangel
-Source0:	https://github.com/f4exb/sdrangel/archive/v%{version}.tar.gz
+Source0:	https://github.com/f4exb/sdrangel/archive/v%{version}/%{name}-%{version}.tar.gz
 # Fix CMakeLists & FindXX.cmake issues
 Patch0:		sdrangel-7.22.9-cmakelist-fixes.patch
 
 #BuildRequires:	airspyone_host-devel
 BuildRequires:	cmake
+BuildRequires:	appstream-util
 BuildRequires:	boost-devel
+BuildRequires:	desktop-file-utils
 BuildRequires:	doxygen
 BuildRequires:	dsdcc-devel
 BuildRequires:	ffmpeg-devel
 BuildRequires:	gcc
+BuildRequires:	ggmorse-devel
 BuildRequires:	glibc-devel
 BuildRequires:	graphviz
 BuildRequires:	hamlib++-devel
 BuildRequires:	hicolor-icon-theme
+BuildRequires:	libinmarsatc-devel
 BuildRequires:	LimeSuite-devel
 BuildRequires:	qmake-qt6
 BuildRequires:	qt6-qtbase-theme-gtk3
@@ -79,9 +83,12 @@ BuildRequires:	cmake(Qt6Widgets)
 #BuildRequires:	cmake(XKB)
 BuildRequires:	pkgconfig(alsa)
 BuildRequires:	pkgconfig(codec2) >= 1.2.0
+# faad2 is in restricted
+# BuildRequires:	pkgconfig(faad2)
 BuildRequires:	pkgconfig(fftw3f)
 BuildRequires:	pkgconfig(flac)
 BuildRequires:	pkgconfig(hamlib)
+BuildRequires:	pkgconfig(libacars-2)
 BuildRequires:	pkgconfig(libairspyhf)
 BuildRequires:	pkgconfig(libavcodec)
 BuildRequires:	pkgconfig(libavformat)
@@ -103,10 +110,12 @@ BuildRequires:	pkgconfig(libxtrxll)
 BuildRequires:	pkgconfig(nanomsg)
 BuildRequires:	pkgconfig(opencv4)
 BuildRequires:	pkgconfig(opus)
+BuildRequires:	pkgconfig(rnnoise)
 BuildRequires:	pkgconfig(SoapySDR)
 BuildRequires:	pkgconfig(uhd)
 BuildRequires:	pkgconfig(xkbcommon)
 BuildRequires:	pkgconfig(zlib)
+BuildRequires:	sgp4-devel
 Requires:	python-requests
 %if %{with fec}
 BuildRequires:	pkgconfig(libcm256cc)
@@ -115,21 +124,26 @@ BuildRequires:	pkgconfig(nanomsg)
 %if %{with freedv}
 BuildRequires:	pkgconfig(codec2)
 %endif
+Suggests:	%{name}-doc = %{version}-%{release}
 
 %description
 SDRangel is an Open Source Qt6/OpenGL SDR and signal analyzer frontend
 to various hardware.
 
 %package doc
-Summary:	Documentation for SDRangel
+Summary:	Documentation and examples for SDRangel
 
 %description doc
-Documentation for SDRangel.
+Documentation and examples for SDRangel.
 
 %prep
 %autosetup -p1
 sed -i 's/\r$//' Readme.md
-sed -i 's|#!%{_bindir}/env python|#!%{__python}|g' swagger/sdrangel/examples/*.py
+# fix shebangs in examples
+sed -i 's|#!%{_bindir}/env python3|#!%{__python3}|g' swagger/sdrangel/examples/*.py
+sed -i 's|#!%{_bindir}/env python|#!%{__python3}|g' swagger/sdrangel/examples/*.py
+# unset executable bit on examples to avoid spurious dependencies on docs
+chmod a-x swagger/sdrangel/examples/*.py
 
 %build
 %cmake \
@@ -154,10 +168,13 @@ sed -i 's|#!%{_bindir}/env python|#!%{__python}|g' swagger/sdrangel/examples/*.p
 %ninja_install -C build
 rm -f %{buildroot}%{_datadir}/sdrangel/Readme.md
 
+%check
+appstream-util validate-relax --nonet %{buildroot}%{_metainfodir}/org.sdrangel.SDRangel.metainfo.xml
+desktop-file-validate %{buildroot}%{_datadir}/applications/sdrangel.desktop
+
 %files
 %license LICENSE
 %{_bindir}/sdrangel
-#%%{_bindir}/ldpctool
 %{_bindir}/sdrangelbench
 %{_bindir}/sdrangelsrv
 %dir %{_libdir}/sdrangel
@@ -165,6 +182,7 @@ rm -f %{buildroot}%{_datadir}/sdrangel/Readme.md
 %{_libdir}/sdrangel/plugins*/
 %{_datadir}/applications/sdrangel.desktop
 %{_datadir}/icons/hicolor/scalable/apps/sdrangel_icon.svg
+%{_metainfodir}/org.sdrangel.SDRangel.metainfo.xml
 
 %files doc
 %doc Readme.md
