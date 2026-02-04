@@ -9,7 +9,7 @@
 %bcond_without freedv
 
 Name:		sdrangel
-Version:	7.23.0
+Version:	7.23.1
 Release:	1
 Summary:	SDR/Analyzer frontend for Airspy, BladeRF, HackRF, RTL-SDR and FunCube
 License:	GPL-3.0-or-later
