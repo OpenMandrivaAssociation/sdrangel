@@ -9,15 +9,13 @@
 %bcond_without freedv
 
 Name:		sdrangel
-Version:	7.23.1
+Version:	7.23.2
 Release:	1
 Summary:	SDR/Analyzer frontend for Airspy, BladeRF, HackRF, RTL-SDR and FunCube
 License:	GPL-3.0-or-later
 Group:		Productivity/Hamradio/Other
 URL:		https://github.com/f4exb/sdrangel
 Source0:	https://github.com/f4exb/sdrangel/archive/v%{version}/%{name}-%{version}.tar.gz
-# Fix CMakeLists & FindXX.cmake issues
-Patch0:		sdrangel-7.22.9-cmakelist-fixes.patch
 
 #BuildRequires:	airspyone_host-devel
 BuildRequires:	cmake
@@ -146,12 +144,14 @@ sed -i 's|#!%{_bindir}/env python|#!%{__python3}|g' swagger/sdrangel/examples/*.
 # unset executable bit on examples to avoid spurious dependencies on docs
 chmod a-x swagger/sdrangel/examples/*.py
 
+# Set ENABLE_LIBUNWIND to off, it is causing build failures.
 %build
 %cmake \
   -DCMAKE_SHARED_LINKER_FLAGS="" \
   -DCMAKE_SKIP_RPATH:BOOL=OFF \
   -DCMAKE_BUILD_TYPE=Release \
   -DENABLE_DISTRIBUTION=ON \
+  -DENABLE_LIBUNWIND:BOOL=OFF \
   -DENABLE_QT6:BOOL=ON \
   -DINSTALL_LIB_DIR=%{_libdir}/%{name} \
 %ifarch %{aarch64}
