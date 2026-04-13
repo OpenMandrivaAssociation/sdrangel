@@ -9,7 +9,7 @@
 %bcond_without freedv
 
 Name:		sdrangel
-Version:	7.23.2
+Version:	7.24.0
 Release:	1
 Summary:	SDR/Analyzer frontend for Airspy, BladeRF, HackRF, RTL-SDR and FunCube
 License:	GPL-3.0-or-later
@@ -18,10 +18,9 @@ URL:		https://github.com/f4exb/sdrangel
 Source0:	https://github.com/f4exb/sdrangel/archive/v%{version}/%{name}-%{version}.tar.gz
 
 #BuildRequires:	airspyone_host-devel
-BuildRequires:	cmake
-BuildRequires:	ninja
 BuildRequires:	appstream-util
 BuildRequires:	boost-devel
+BuildRequires:	cmake
 BuildRequires:	desktop-file-utils
 BuildRequires:	doxygen
 BuildRequires:	dsdcc-devel
@@ -34,6 +33,7 @@ BuildRequires:	hamlib++-devel
 BuildRequires:	hicolor-icon-theme
 BuildRequires:	libinmarsatc-devel
 BuildRequires:	LimeSuite-devel
+BuildRequires:	ninja
 BuildRequires:	qmake-qt6
 BuildRequires:	qt6-qtbase-theme-gtk3
 BuildRequires:	qt6-qtmultimedia-gstreamer
@@ -46,7 +46,6 @@ BuildRequires:	cmake(Qt6Charts)
 BuildRequires:	cmake(Qt6Core)
 BuildRequires:  cmake(Qt6CorePrivate)
 BuildRequires:	cmake(Qt6Core5Compat)
-BuildRequires:	cmake(Qt6ExamplesAssetDownloaderPrivate)
 BuildRequires:	cmake(Qt6Gui)
 BuildRequires:	cmake(Qt6LabsSynchronizer)
 BuildRequires:	cmake(Qt6Location)
@@ -56,7 +55,6 @@ BuildRequires:	cmake(Qt6Network)
 BuildRequires:	cmake(Qt6OpenGL)
 BuildRequires:	cmake(Qt6OpenGLWidgets)
 BuildRequires:	cmake(Qt6Positioning)
-BuildRequires:	cmake(Qt6QmlAssetDownloader)
 BuildRequires:	cmake(Qt6Qml)
 BuildRequires:	cmake(Qt6QmlCore)
 BuildRequires:	cmake(Qt6QmlNetwork)
