@@ -91,7 +91,9 @@ BuildRequires:	pkgconfig(libavcodec)
 BuildRequires:	pkgconfig(libavformat)
 BuildRequires:	pkgconfig(libavutil)
 BuildRequires:	pkgconfig(libbladeRF)
+%ifnarch %{aarch64}
 BuildRequires:	pkgconfig(libhackrf)
+%endif
 BuildRequires:	pkgconfig(libiio)
 BuildRequires:	pkgconfig(liblz4)
 #BuildRequires:	pkgconfig(libpostproc)
@@ -154,6 +156,7 @@ chmod a-x swagger/sdrangel/examples/*.py
   -DINSTALL_LIB_DIR=%{_libdir}/%{name} \
 %ifarch %{aarch64}
   -DARCH_OPT="" \
+  -DENABLE_HACKRF=OFF \
 %endif
 %ifarch %{ix86}
   -DFORCE_SSE41=ON \
