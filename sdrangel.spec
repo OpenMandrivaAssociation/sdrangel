@@ -10,7 +10,7 @@
 
 Name:		sdrangel
 Version:	7.27.1
-Release:	5
+Release:	6
 Summary:	SDR/Analyzer frontend for Airspy, BladeRF, HackRF, RTL-SDR and FunCube
 License:	GPL-3.0-or-later
 Group:		Productivity/Hamradio/Other
@@ -91,9 +91,7 @@ BuildRequires:	pkgconfig(libavcodec)
 BuildRequires:	pkgconfig(libavformat)
 BuildRequires:	pkgconfig(libavutil)
 BuildRequires:	pkgconfig(libbladeRF)
-%ifnarch %{aarch64}
 BuildRequires:	pkgconfig(libhackrf)
-%endif
 BuildRequires:	pkgconfig(libiio)
 BuildRequires:	pkgconfig(liblz4)
 #BuildRequires:	pkgconfig(libpostproc)
@@ -156,7 +154,6 @@ chmod a-x swagger/sdrangel/examples/*.py
   -DINSTALL_LIB_DIR=%{_libdir}/%{name} \
 %ifarch %{aarch64}
   -DARCH_OPT="" \
-  -DENABLE_HACKRF=OFF \
 %endif
 %ifarch %{ix86}
   -DFORCE_SSE41=ON \
