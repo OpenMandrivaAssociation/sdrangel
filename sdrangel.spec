@@ -9,8 +9,8 @@
 %bcond_without freedv
 
 Name:		sdrangel
-Version:	7.27.1
-Release:	7
+Version:	8.1.0
+Release:	1
 Summary:	SDR/Analyzer frontend for Airspy, BladeRF, HackRF, RTL-SDR and FunCube
 License:	GPL-3.0-or-later
 Group:		Productivity/Hamradio/Other
@@ -112,6 +112,7 @@ BuildRequires:	pkgconfig(SoapySDR)
 BuildRequires:	pkgconfig(uhd)
 BuildRequires:	pkgconfig(xkbcommon)
 BuildRequires:	pkgconfig(zlib)
+BuildRequires:	pkgconfig(libzstd)
 BuildRequires:	sgp4-devel
 Requires:	python-requests
 %if %{with fec}
@@ -150,7 +151,9 @@ chmod a-x swagger/sdrangel/examples/*.py
   -DCMAKE_BUILD_TYPE=Release \
   -DENABLE_DISTRIBUTION=ON \
   -DENABLE_LIBUNWIND:BOOL=OFF \
+  -DENABLE_LTO:BOOL=OFF \
   -DENABLE_QT6:BOOL=ON \
+  -DBUILD_MCP_BUNDLE:BOOL=OFF \
   -DINSTALL_LIB_DIR=%{_libdir}/%{name} \
 %ifarch %{aarch64}
   -DARCH_OPT="" \
@@ -176,6 +179,8 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/sdrangel.desktop
 %{_bindir}/sdrangel
 %{_bindir}/sdrangelbench
 %{_bindir}/sdrangelsrv
+%{_bindir}/sdrangel-mcp-bridge
+%{_bindir}/sdrangel-vst3-scan
 %dir %{_libdir}/sdrangel
 %{_libdir}/sdrangel/lib*
 %{_libdir}/sdrangel/plugins*/
